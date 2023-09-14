@@ -12,8 +12,8 @@ using PRACTICA3.Data;
 namespace PRACTICA3.Migrations
 {
     [DbContext(typeof(PRACTICA3Context))]
-    [Migration("20230913221931_Migracion_Incial")]
-    partial class Migracion_Incial
+    [Migration("20230914011823_Migacion_Inicial")]
+    partial class Migacion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,14 +34,18 @@ namespace PRACTICA3.Migrations
 
                     b.Property<string>("Apellido")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
 
-                    b.Property<int>("CI")
-                        .HasColumnType("int");
+                    b.Property<string>("CI")
+                        .IsRequired()
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
 
                     b.HasKey("ClienteID");
 

@@ -36,7 +36,7 @@ namespace PRACTICA3.Pages.Paginas.Ventas
                 return NotFound();
             }
             Venta = venta;
-           ViewData["ClienteID"] = new SelectList(_context.Cliente, "ClienteID", "ClienteID");
+           ViewData["ClienteID"] = new SelectList(_context.Cliente, "ClienteID", "Apellido");
             return Page();
         }
 

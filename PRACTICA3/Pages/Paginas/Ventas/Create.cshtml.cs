@@ -21,7 +21,7 @@ namespace PRACTICA3.Pages.Paginas.Ventas
 
         public IActionResult OnGet()
         {
-        ViewData["ClienteID"] = new SelectList(_context.Cliente, "ClienteID", "ClienteID");
+        ViewData["ClienteID"] = new SelectList(_context.Cliente, "ClienteID", "Apellido");
             return Page();
         }
 
@@ -32,7 +32,7 @@ namespace PRACTICA3.Pages.Paginas.Ventas
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (_context.Venta == null || Venta == null)
+          if (!ModelState.IsValid || _context.Venta == null || Venta == null)
             {
                 return Page();
             }
