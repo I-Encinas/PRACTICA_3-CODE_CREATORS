@@ -1,0 +1,48 @@
+﻿@page
+@model PRACTICA3.Pages.Paginas.Ventas.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Venta[0].Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Venta[0].PrecioTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Venta[0].Clientes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Venta) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clientes.ClienteID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.VentaID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.VentaID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.VentaID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
