@@ -23,13 +23,10 @@ namespace PRACTICA3.Modelos
     public class Venta
     {
         public int VentaID { get; set; }
-       
         public int ClienteID { get; set; } 
-        public DateTime Fecha { get; set; }
+        public DateTime Fecha { get; set; } = DateTime.Now;
         public double PrecioTotal { get; set; }
         public Cliente Clientes { get; set; }
         public List<Producto> Productos { get; set; }
-        
-
     }
 }
