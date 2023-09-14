@@ -31,7 +31,7 @@ namespace PRACTICA3.Pages.Paginas.Clientes
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if ( _context.Cliente == null || Cliente == null)
+          if (!ModelState.IsValid || _context.Cliente == null || Cliente == null)
             {
                 return Page();
             }
