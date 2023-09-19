@@ -1,12 +1,27 @@
 ﻿@page
 @model PRACTICA3.Pages.Paginas.Ventas.IndexModel
-
+@using PRACTICA3.Modelos
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>VENTAS REALIZADAS</h1>
-
+<form>
+    <select class="form-select" asp-for="ValorTipo">
+        <!-- para buscar el tipo que tiene la clase, haciendo excepciones de algunos campos-->
+        @foreach (var tipo in typeof(Venta).GetProperties())
+        {
+            if (tipo.Name != "VentaID" && tipo.Name != "ClienteID" && tipo.Name != "Productos")
+            {
+                <option value="@tipo.Name">@tipo.Name</option>
+            }
+        }
+    </select>
+    <p>
+        <input type="text" asp-for="ValorFiltrado" />
+        <input type="submit" value="Filtrar" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>

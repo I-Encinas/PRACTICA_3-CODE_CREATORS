@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -20,14 +21,40 @@ namespace PRACTICA3.Pages.Paginas.Ventas
         }
 
         public IList<Venta> Venta { get;set; } = default!;
+        //hacemos el soporte de envio de datos
+        [BindProperty(SupportsGet = true)]
+        public string ValorTipo { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string ValorFiltrado { get; set; }
 
         public async Task OnGetAsync()
         {
-            if (_context.Venta != null)
+            //declaramos una consulta
+            var venta = from m in _context.Venta select m;
+
+            if (!string.IsNullOrEmpty(ValorTipo) && !string.IsNullOrEmpty(ValorFiltrado))
             {
-                Venta = await _context.Venta
-                .Include(v => v.Clientes).ToListAsync();
+                //segun al tipo buscaremos sus similares
+                if (ValorTipo == "Fecha")
+                {
+                    DateTime fechaFiltrada;
+                    if (DateTime.TryParseExact(ValorFiltrado, "MM-dd-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out fechaFiltrada))
+                    {
+                        venta = venta.Where(s => s.Fecha.Date == fechaFiltrada.Date);
+                    }
+                }
+
+                if (ValorTipo == "PrecioTotal")
+                {
+                    venta = venta.Where(s => s.PrecioTotal.Equals(Convert.ToDouble(ValorFiltrado)));
+                }
+                if (ValorTipo == "Clientes")
+                {
+                    venta = venta.Where(s => s.Clientes.Nombre.Equals(ValorFiltrado));
+                }
             }
+            Venta = await venta.Include(v => v.Clientes).ToListAsync();
         }
+
     }
 }

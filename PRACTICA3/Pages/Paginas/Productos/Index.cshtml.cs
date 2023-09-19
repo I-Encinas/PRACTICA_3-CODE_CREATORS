@@ -20,13 +20,28 @@ namespace PRACTICA3.Pages.Paginas.Productos
         }
 
         public IList<Producto> Producto { get;set; } = default!;
-
+        //hacemos el soporte de envio de datos
+        [BindProperty(SupportsGet = true)]
+        public string ValorTipo { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string ValorFiltrado { set; get; }
         public async Task OnGetAsync()
         {
-            if (_context.Producto != null)
+            //declaramos una consulta
+            var prod = from m in _context.Producto select m;
+            //segun al tipo buscaremos sus similares
+            if (!string.IsNullOrEmpty(ValorTipo) && !string.IsNullOrEmpty(ValorFiltrado))
             {
-                Producto = await _context.Producto.ToListAsync();
+                if (ValorTipo == "Nombre")
+                {
+                    prod = prod.Where(s => s.Nombre.Equals(ValorFiltrado));
+                }
+                if (ValorTipo == "PrecioU")
+                {
+                    prod = prod.Where(s => s.PrecioU >= Convert.ToDouble(ValorFiltrado));
+                }
             }
+            Producto = await prod.ToListAsync();
         }
     }
 }

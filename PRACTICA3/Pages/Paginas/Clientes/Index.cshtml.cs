@@ -20,13 +20,33 @@ namespace PRACTICA3.Pages.Paginas.Clientes
         }
 
         public IList<Cliente> Cliente { get;set; } = default!;
-
+        //hacemos el soporte de envio de datos
+        [BindProperty(SupportsGet = true)]
+        public string ValorFiltrado { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string ValorTipo { get; set; }
         public async Task OnGetAsync()
         {
-            if (_context.Cliente != null)
+            //declaramos una consulta
+            var valor = from m in _context.Cliente select m;
+            //si ninguno de los valores estan vacios entonces
+            if (!string.IsNullOrEmpty(ValorFiltrado) && !string.IsNullOrEmpty(ValorTipo))
             {
-                Cliente = await _context.Cliente.ToListAsync();
+                //segun al tipo buscaremos sus similares
+                if (ValorTipo == "CI")
+                {
+                    valor = valor.Where(s => s.CI.Equals(ValorFiltrado));
+                }
+                if (ValorTipo == "Nombre")
+                {
+                    valor = valor.Where(s => s.Nombre.Equals(ValorFiltrado));
+                }
+                if (ValorTipo == "Apellido")
+                {
+                    valor = valor.Where(s => s.Apellido.Equals(ValorFiltrado));
+                }
             }
+            Cliente = await valor.ToListAsync();
         }
     }
 }

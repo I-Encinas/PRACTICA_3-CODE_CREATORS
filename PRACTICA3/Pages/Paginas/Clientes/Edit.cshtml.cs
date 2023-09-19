@@ -44,10 +44,7 @@ namespace PRACTICA3.Pages.Paginas.Clientes
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+
 
             _context.Attach(Cliente).State = EntityState.Modified;
 
