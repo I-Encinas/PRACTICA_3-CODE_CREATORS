@@ -37,11 +37,7 @@ namespace PRACTICA3.Pages.Paginas.Ventas
                 //segun al tipo buscaremos sus similares
                 if (ValorTipo == "Fecha")
                 {
-                    DateTime fechaFiltrada;
-                    if (DateTime.TryParseExact(ValorFiltrado, "MM-dd-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out fechaFiltrada))
-                    {
-                        venta = venta.Where(s => s.Fecha.Date == fechaFiltrada.Date);
-                    }
+                    venta = venta.Where(s => s.Fecha.Date.Equals(Convert.ToDateTime(ValorFiltrado)));
                 }
 
                 if (ValorTipo == "PrecioTotal")
