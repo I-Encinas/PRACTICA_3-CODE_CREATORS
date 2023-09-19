@@ -7,39 +7,101 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PRACTICA3.styles.css" asp-append-version="true" />
+
+    <style>
+
+
+        body {
+            background-color: #eee;
+        }
+
+        .navbar-nav > li > a {
+            text-transform: uppercase;
+            font-size: 12px;
+            margin-right: 20px;
+            color: #fff;
+        }
+
+
+        .navbar-toggler {
+            padding: .20rem .50rem;
+            font-size: 1.25rem;
+            line-height: 1;
+            background-color: transparent;
+            border: 1px solid white;
+        }
+
+        .nav-link {
+            color: #fff !important;
+        }
+
+
+        .wrapper {
+            width: 100%;
+            position: absolute;
+            height: 100%;
+            background-color: #000;
+            clip-path: polygon(81% 0, 100% 0, 100% 50%, 100% 100%, 71% 100%);
+            transition: 1s all;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-family: 'Allerta Stencil', sans-serif;
+            margin-bottom: 4px;
+            font-size: 27px;
+        }
+
+        .navbar-red:hover .wrapper {
+            clip-path: polygon(81% 0, 100% 0, 100% 50%, 100% 100%, 65% 100%);
+        }
+
+        .navbar-brand:hover {
+            color: #fff;
+        }
+
+        .navbar-red {
+            background-color: red;
+            color: #fff;
+        }
+
+        .all-show {
+            z-index: 10;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">PRACTICA3</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-red navbar-dark">
+            <div class="wrapper">
+            </div>
+            <div class="container-fluid all-show">
+                <a class="navbar-brand" href="#">PRACTICA 3 <i class="fa fa-codepen"></i></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link active" aria-current="page" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Paginas/Clientes/Index">Cliente</a>
+                            <a class="nav-link" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
-                        </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Paginas/Productos/Index">Productos</a>
+                            <a class="nav-link" asp-area="" asp-page="/Paginas/Clientes/Index">Cliente</a>
                         </li>
-                        </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Paginas/Ventas/Index">Ventas</a>
+                            <a class="nav-link" asp-area="" asp-page="/Paginas/Productos/Index">Productos</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Paginas/compras">Compras</a>
+                            <a class="nav-link" asp-area="" asp-page="/Paginas/Ventas/Index">Ventas</a>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </nav>
