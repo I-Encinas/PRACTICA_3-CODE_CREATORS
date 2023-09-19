@@ -1,0 +1,58 @@
+﻿@page
+@model PRACTICA3.Pages.Paginas.comprasModel
+
+@{
+    ViewData["Title"] = "compras";
+}
+
+<h1>Compras</h1>
+
+<form method="post">
+    <label for="cliente">Escoja el cliente: </label>
+    <select asp-for="@Model.Cliente_id">
+        @foreach (var item in Model.Clientes)
+        {
+            <option value="@item.ClienteID.ToString()">@item.Nombre @item.Apellido</option>
+        }
+    </select>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    Cantidad
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 0;
+            }
+            @foreach (var item in Model.Productos)
+            {
+                <tr>
+                    <td>
+                        @item.Nombre
+                    </td>
+                    <td>
+                        @item.PrecioU
+                    </td>
+                    <td>
+                        <input type="number" asp-for="@Model.Cantidad[i]" required>
+                    </td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+    <div class="btn_enviar">
+        <button type="submit" class="btn-primary btn">Enviar</button>
+    </div>
+</form>
+    
+

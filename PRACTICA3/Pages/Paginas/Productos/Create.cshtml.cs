@@ -31,7 +31,7 @@ namespace PRACTICA3.Pages.Paginas.Productos
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Producto == null || Producto == null)
+          if (_context.Producto == null || Producto == null)
             {
                 return Page();
             }
