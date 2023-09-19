@@ -1,0 +1,37 @@
+﻿@page
+@model PRACTICA3.Pages.Paginas.ResumenModel
+@{
+}
+<h1>RESUMEN DE COMPRAS</h1>
+<form method="post">
+    <h3>CLIENTE: @Model.Cliente.NombreCompleto</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">NOMBRE</th>
+                <th scope="col">PRECIO</th>
+                <th scope="col">CANTIDAD</th>
+                <th scope="col">SUBTOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Productos.Count; i++)
+            {
+                <tr>
+                    <td>@Model.Productos[i].Nombre</td>
+                    <td>@Model.Productos[i].PrecioU</td>
+                    <td>@Model.cantPr[i]</td>
+                    <td>@Model.subtotal(Model.Productos[i].PrecioU, Model.cantPr[i])</td>
+                </tr>
+            }
+            <tr>
+                <td colspan="3">TOTAL</td>
+                <td>Bs.- @(Model.Total)</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit">CONFIRMAR COMPRA</button>
+    </div>
+</form>
+

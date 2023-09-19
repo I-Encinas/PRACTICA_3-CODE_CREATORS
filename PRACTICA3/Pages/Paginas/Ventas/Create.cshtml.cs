@@ -12,6 +12,11 @@ namespace PRACTICA3.Pages.Paginas.Ventas
 {
     public class CreateModel : PageModel
     {
+        public Cliente Cliente { get; set; }
+        public double TotalCompras { get; set; }
+        public int idCli { get; set; }
+        public string prueba { get; set; }
+
         private readonly PRACTICA3.Data.PRACTICA3Context _context;
 
         public CreateModel(PRACTICA3.Data.PRACTICA3Context context)
@@ -21,7 +26,13 @@ namespace PRACTICA3.Pages.Paginas.Ventas
 
         public IActionResult OnGet()
         {
-        ViewData["ClienteID"] = new SelectList(_context.Cliente, "ClienteID", "Apellido");
+            var dato1 = TempData["idCliente"] as string;
+            if (!string.IsNullOrEmpty(dato1))
+            {
+                prueba = (dato1);
+            }
+            
+            ViewData["ClienteID"] = new SelectList(_context.Cliente, "ClienteID", "Apellido");
             return Page();
         }
 

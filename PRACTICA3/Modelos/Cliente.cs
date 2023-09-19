@@ -18,6 +18,8 @@ namespace PRACTICA3.Modelos
         [RegularExpression("^[0-9]*$", ErrorMessage = "En el CI solo se permiten números.")]
         [StringLength(12, MinimumLength = 7, ErrorMessage = "El CI debe tener una cantidad minima de 7 caracteres.")]
         public string CI { get; set; } = string.Empty;
+
+        public string NombreCompleto => $"{Nombre} {Apellido}";
         public List<Venta> Ventas { get; set; }
     }
 }

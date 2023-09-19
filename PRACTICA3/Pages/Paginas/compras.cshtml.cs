@@ -73,9 +73,9 @@ namespace PRACTICA3.Pages.Paginas
                         // Puedes hacer algo con el mensaje de error, como mostrarlo en la vista.
                     }
                 }
-                return RedirectToPage("/Paginas/pruebas", new { cliente = errores});
+                return RedirectToPage("/Paginas/Resumen", new { cliente = errores});
             }
-            return RedirectToPage("/Paginas/pruebas", new { cliente = Cliente_id, productos = Productos_str});
+            return RedirectToPage("/Paginas/Resumen", new { cliente = Cliente_id, productos = Productos_str});
         }
     }
 }
