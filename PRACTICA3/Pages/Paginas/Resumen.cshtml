@@ -2,7 +2,9 @@
 @model PRACTICA3.Pages.Paginas.ResumenModel
 @{
 }
+@* RESUMEN DE LAS VENTAS REALIZADAS *@
 <h1>RESUMEN DE COMPRAS</h1>
+@* USO DE METODO POST  *@
 <form method="post">
     <h3>CLIENTE: @Model.Cliente.NombreCompleto</h3>
     <table class="table table-striped">
@@ -15,6 +17,7 @@
             </tr>
         </thead>
         <tbody>
+            @* BUCLE PARA ENLISTAR LOS PRODUCTOS Y SUS CARACTERISTICAS *@
             @for (int i = 0; i < Model.Productos.Count; i++)
             {
                 <tr>
@@ -25,6 +28,7 @@
                 </tr>
             }
             <tr>
+                @* PRECIO TOTAL *@
                 <td colspan="3">TOTAL</td>
                 <td>Bs.- @(Model.Total)</td>
             </tr>

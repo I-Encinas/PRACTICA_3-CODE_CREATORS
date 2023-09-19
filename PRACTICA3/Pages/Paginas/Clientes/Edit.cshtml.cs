@@ -21,7 +21,8 @@ namespace PRACTICA3.Pages.Paginas.Clientes
         }
 
         [BindProperty]
-        public Cliente Cliente { get; set; } = default!;
+        public Cliente Cliente { get; set; } = default!;//PROPIEDAD QUE ENLAZA EL MODELO CLIENTE
+
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

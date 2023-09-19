@@ -13,6 +13,7 @@ namespace PRACTICA3.Data
             : base(options)
         {
         }
+        //Se define el dbset para las 3 tablas principales
 
         public DbSet<PRACTICA3.Modelos.Cliente>? Cliente { get; set; } 
 
@@ -20,19 +21,7 @@ namespace PRACTICA3.Data
 
         public DbSet<PRACTICA3.Modelos.Venta>? Venta { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-
-        //    modelBuilder.Entity<Venta>()
-        //        .HasOne(v => v.Clientes)
-        //        .WithMany()
-        //        .HasForeignKey(v => v.IDCliente);
-
-        //    modelBuilder.Entity<Venta>()
-        //        .HasMany(v => v.Productos)
-        //        .WithMany()
-        //        .UsingEntity(j => j.ToTable("VENTAS_P"));
-        //}
+        //Se asigna la relacionentre las tablas clientes y ventas, y productos y ventas
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Venta>()

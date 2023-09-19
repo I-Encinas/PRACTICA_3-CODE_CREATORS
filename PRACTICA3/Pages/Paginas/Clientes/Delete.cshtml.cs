@@ -20,10 +20,13 @@ namespace PRACTICA3.Pages.Paginas.Clientes
         }
 
         [BindProperty]
-      public Cliente Cliente { get; set; } = default!;
+      public Cliente Cliente { get; set; } = default!;//PROPIEDAD QUE ENLAZA EL MODELO CLIENTE
 
+        // Método que se ejecuta al realizar una solicitud GET a la página con un parámetro de identificación "id"
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            //VALIDA QUE LO INGRESADO NO SEA NULO
+
             if (id == null || _context.Cliente == null)
             {
                 return NotFound();
@@ -41,9 +44,12 @@ namespace PRACTICA3.Pages.Paginas.Clientes
             }
             return Page();
         }
+        // Método que se ejecuta al realizar una solicitud POST a la página con un parámetro de identificación "id" 
 
         public async Task<IActionResult> OnPostAsync(int? id)
-        {
+        {            
+            //VALIDA QUE LO INGRESADO NO SEA NULO
+
             if (id == null || _context.Cliente == null)
             {
                 return NotFound();

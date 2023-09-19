@@ -3,25 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PRACTICA3.Modelos
 {
-    //public class Venta
-    //{
-    //    [Required]
-    //    public int ID { get; set; }
-    //    [Required]
-    //    [ForeignKey("Cliente")]
-    //    public int IDCliente { get; set; }
-    //    [Required]
-    //    [ForeignKey("Producto")]
-    //    public int IDProducto { get; set; }
-    //    [Required]
-    //    public double PrecioTotal { get; set; }
-        
-    //    public Cliente Clientes  { get; set; }
-    //   // public Producto Productos  { get; set; }
-    //    public List<Producto> Productos { get; set; }
-    //}
+    //CREACION DE LA CLASE VENTA
+
     public class Venta
     {
+        //CREACION DE LAS PROPIEDADES DE LA CLASE VENTAN SUS RESPECTIVAS VALIDACIONES 
+
         public int VentaID { get; set; }
        
         public int ClienteID { get; set; } 

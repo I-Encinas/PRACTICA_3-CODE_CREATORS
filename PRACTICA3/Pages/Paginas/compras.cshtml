@@ -6,10 +6,13 @@
 }
 
 <h1>Compras</h1>
+@* FORMULARIO QUE HACE USO DEL MÉTODO POST PARA ENVIO DE PARAMETROS *@
 
 <form method="post">
     <label for="cliente">Escoja el cliente: </label>
     <select asp-for="@Model.Cliente_id">
+        @*Bucle para mostrar la lista de clientes (NOMBRE Y APELLIDO) *@
+
         @foreach (var item in Model.Clientes)
         {
             <option value="@item.ClienteID.ToString()">@item.Nombre @item.Apellido</option>
@@ -18,6 +21,8 @@
     <p>
         <a asp-page="/Paginas/Clientes/Create">Registrar Nuevo Usuario</a>
     </p>
+    @* TABLA QUE MUESTRA LOS PRODUCTOS *@
+
     <table class="table">
         <thead>
             <tr>
@@ -36,6 +41,8 @@
             @{
                 int i = 0;
             }
+            @* Bucle para mostrar la lista de productos *@
+
             @foreach (var item in Model.Productos)
             {
                 <tr>

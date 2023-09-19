@@ -9,6 +9,8 @@ namespace PRACTICA3.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            //CREACION TABLA CLIENTE
+
             migrationBuilder.CreateTable(
                 name: "Cliente",
                 columns: table => new
@@ -23,6 +25,7 @@ namespace PRACTICA3.Migrations
                 {
                     table.PrimaryKey("PK_Cliente", x => x.ClienteID);
                 });
+            //CREACION TABLA PRODUCTO
 
             migrationBuilder.CreateTable(
                 name: "Producto",
@@ -37,6 +40,7 @@ namespace PRACTICA3.Migrations
                 {
                     table.PrimaryKey("PK_Producto", x => x.ProductoID);
                 });
+            //CREACION TABLA VENTAS
 
             migrationBuilder.CreateTable(
                 name: "Venta",
@@ -48,6 +52,8 @@ namespace PRACTICA3.Migrations
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PrecioTotal = table.Column<double>(type: "float", nullable: false)
                 },
+                //ASIGNACION DE LLAVES FORANEAS
+
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Venta", x => x.VentaID);
@@ -58,6 +64,7 @@ namespace PRACTICA3.Migrations
                         principalColumn: "ClienteID",
                         onDelete: ReferentialAction.Cascade);
                 });
+            //CREACION DE TABLA INTERSECCION ENTRE VENTAS Y PRODUCTOS
 
             migrationBuilder.CreateTable(
                 name: "VENTAS_P",
@@ -93,6 +100,7 @@ namespace PRACTICA3.Migrations
                 table: "VENTAS_P",
                 column: "VentasVentaID");
         }
+        //ELIMINA LOS CAMBIOS EN LA BD Y ELIMINA LAS TABLAS 
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {

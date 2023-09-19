@@ -2,9 +2,12 @@
 
 namespace PRACTICA3.Modelos
 {
+    //CREACION DE LA CLASE CLIENTES
 
     public class Cliente
     {
+        //CREACION DE LA PROPIEDADES DE LA CLASE CLIENTES CON SUS RESPECTIVAS VALIDACIONES 
+
         public int ClienteID { get; set; }
         [Required]
         [StringLength(60, MinimumLength = 3, ErrorMessage = "El NOMBRE debe tener una cantidad minima de 3 caracteres.")]

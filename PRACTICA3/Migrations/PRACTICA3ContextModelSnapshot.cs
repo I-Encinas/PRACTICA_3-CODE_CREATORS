@@ -21,7 +21,9 @@ namespace PRACTICA3.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
+            //CREA LA BD EN BASE A LAS CLASES EN LA CARPETA "MODELOS
+            //*INDICA LAS RELACIONES
+            //*DETERMINA LA LLAVE PRIMARIA, LA CUAL SE CREA COMO AUTOINCREMENTAL
             modelBuilder.Entity("PRACTICA3.Modelos.Cliente", b =>
                 {
                     b.Property<int>("ClienteID")

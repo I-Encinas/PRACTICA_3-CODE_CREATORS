@@ -3,9 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PRACTICA3.Modelos
 {
+    //CREACION DE L CLASE PRODUCTO
 
     public class Producto
     {
+        //CREACION DE LAS PROPIEDADES DE LA CLASE PRODUCTO CON SUS RESPECTIVAS VALIDACIONES 
+
         public int ProductoID { get; set; }
         [Required]
         [StringLength(60, MinimumLength = 3, ErrorMessage = "El NOMBRE debe tener una cantidad minima de 3 caracteres.")]

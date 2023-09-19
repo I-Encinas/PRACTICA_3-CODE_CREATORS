@@ -17,15 +17,16 @@ namespace PRACTICA3.Pages.Paginas
         private readonly PRACTICA3.Data.PRACTICA3Context _context;
 
         [BindProperty(SupportsGet = true)]
-        public string Cliente_id { get; set; }
-        public string Productos_str { get; set; } = string.Empty;
+        public string Cliente_id { get; set; }//almacenar id de cliente
+        public string Productos_str { get; set; } = string.Empty;//almacenar una cadena de productos seleccionados
 
         [BindProperty]
-        public List<Cliente> Clientes { get; set; }
-        public List<Producto> Productos { get; set; }
+        public List<Cliente> Clientes { get; set; }//lista de clientes
+        public List<Producto> Productos { get; set; }//lista de productos
         [BindProperty]
-        public List<int> Cantidad { get; set; } = new List<int>();
+        public List<int> Cantidad { get; set; } = new List<int>();//lista de cantidad de precio_unitario
 
+        //verifica que cliente y productos no sean nulos
         public comprasModel(PRACTICA3.Data.PRACTICA3Context context)
         {
             _context = context;
@@ -45,12 +46,14 @@ namespace PRACTICA3.Pages.Paginas
                 Cantidad.Add(0);
             }
         }
-
+        //trabaja con el metodo post
         public IActionResult OnPost()
         {
             int i = 0;
+            //bucle para enlistar los productos
             foreach (var producto in Productos)
             {
+                //verifica que la cantidad de producto sea mayor a cero
                 if (Cantidad[i] > 0)
                 {
                     Productos_str = Productos_str + producto.ProductoID + "*" + Cantidad[i].ToString() + "_";
